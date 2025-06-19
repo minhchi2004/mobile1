@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/home"
+    tools:context=".HomeActivity">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quần áo"
+            android:textSize="25sp"
+            android:textColor="@color/Orange"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gồm các quần áo chính hãng"
+            android:textColor="@color/teal_700"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp" />
+    </LinearLayout>
+
+    <!-- Hình nền chỉ nằm dưới SearchView (banner nhỏ) -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/header"
+        android:scaleType="centerCrop"
+        android:src="@drawable/minhchi"
+        android:contentDescription="@string/app_name" />
+
+    <!-- SearchView nằm phía trên hình nền -->
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/backgroundImage"
+        android:iconifiedByDefault="false"
+        android:queryHint="Tìm quần áo..."
+        android:layout_margin="10dp"
+        android:background="@android:color/white" />
+
+    <!-- ListView nằm dưới search -->
+    <ListView
+        android:id="@+id/movie_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_view"
+        android:layout_above="@id/bottom_nav"
+        android:dividerHeight="10dp"
+        android:background="@android:color/transparent"
+        android:paddingTop="20dp" />
+
+    <!-- Bottom Navigation Bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>
