@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pastel_pink"
     tools:context=".RegisterActivity">
 
     <LinearLayout
@@ -29,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Create password"
+            android:hint="Tạo Mật Khẩu"
             android:inputType="numberPassword" />
 
         <EditText
@@ -37,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Confirm password"
+            android:hint="Xác nhận Mật Khẩu"
             android:inputType="numberPassword" />
 
         <Button

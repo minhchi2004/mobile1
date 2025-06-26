@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 EditText objPass =findViewById(R.id.editTextNumberPassword);
                 String txtPass = objPass.getText().toString();
-                if (txtPass.equals("123")&&txtPhone.equals("0386621075")) {
+                if (txtPass.equals("123")&&txtPhone.equals("130504")) {
                     Intent it = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(it);
                 }

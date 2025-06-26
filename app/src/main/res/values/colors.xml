@@ -10,4 +10,9 @@
     <color name="Orange">#CC7832</color>
     <color name="accent_blue">#FF448AFF</color>
     <color name="accent_yellow">#FFFFC107</color>
+    <color name="pastel_pink">#FADADD</color>
+    <color name="deep_red">#D32F2F</color>
+
+
+
 </resources>

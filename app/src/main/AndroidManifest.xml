@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
     <application
@@ -9,26 +11,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".CartActivity"
+            android:exported="false" />
+        <!-- Màn hình chính -->
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
-            <!-- Đây là màn hình chính -->
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Các Activity khác -->
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
+        <activity
+            android:name=".ProductDetailActivity"
+            android:exported="false" />
+
+        <activity android:name=".PaymentActivity" />
 
 
 
-        </application>
+        <!--        <activity-->
+<!--            android:name=".CartActivity"-->
+<!--            tools:ignore="DuplicateActivity" />-->
 
 
+    </application>
 
 </manifest>
