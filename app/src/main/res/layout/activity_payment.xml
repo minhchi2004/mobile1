@@ -2,40 +2,112 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:gravity="center_horizontal"
+    android:padding="20dp">
 
+    <!-- Khung tròn chứa dấu tick -->
+    <FrameLayout
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_blue">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/payment_icon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_check_circle_white"
+            android:contentDescription="Thanh toán thành công" />
+    </FrameLayout>
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/payment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thanh toán thành công"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp" />
+
+    <!-- Ảnh sản phẩm -->
     <ImageView
         android:id="@+id/payment_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_marginTop="20dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background" />
+        android:contentDescription="Ảnh sản phẩm" />
 
+    <!-- Tên sản phẩm -->
     <TextView
         android:id="@+id/payment_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tên sản phẩm"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="12dp"
+        android:text="Tên sản phẩm: ..."
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/payment_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Giá"
-        android:textSize="18sp"
-        android:textColor="@android:color/holo_red_dark"
-        android:layout_marginTop="10dp"/>
-
+    <!-- Số lượng -->
     <TextView
         android:id="@+id/payment_quantity"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Số lượng"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="4dp"
+        android:text="Số lượng: 1"
+        android:textSize="16sp" />
+
+    <!-- Giá -->
+    <TextView
+        android:id="@+id/payment_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Giá: 109.000 VNĐ"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="16sp" />
+
+    <!-- Phương thức thanh toán -->
+    <TextView
+        android:id="@+id/payment_method"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Phương thức: Thanh toán MOMO"
+        android:textSize="16sp" />
+
+    <!-- Người nhận -->
+    <TextView
+        android:id="@+id/payment_receiver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Người nhận: Nguyễn Văn A - 021‑8018‑7116"
+        android:textSize="16sp" />
+
+    <!-- Địa chỉ -->
+    <TextView
+        android:id="@+id/payment_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Địa chỉ: 353/9 Nguyễn Trãi, P5, Q5, TP.HCM"
+        android:textSize="16sp" />
+
+    <!-- Nút Mua lại -->
+    <Button
+        android:id="@+id/btn_buy_again"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Mua lại"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/holo_blue_dark" />
+
 </LinearLayout>

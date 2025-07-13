@@ -15,66 +15,80 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class CartActivity extends AppCompatActivity {
+
+    private LinearLayout cartContainer;
+    private ArrayList<Product> cartProducts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cart);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        cartContainer = findViewById(R.id.cart_container);
+        cartProducts = new ArrayList<>();
 
         // Nhận dữ liệu từ Intent
         Intent intent = getIntent();
-        int image = intent.getIntExtra("image", 0);
         String name = intent.getStringExtra("name");
         String price = intent.getStringExtra("price");
         String quantity = intent.getStringExtra("quantity");
+        int image = intent.getIntExtra("image", 0);
 
-        // Ánh xạ View
-        ImageView imageView = findViewById(R.id.item_image_1);
-        TextView nameView = findViewById(R.id.item_name_1);
-        TextView priceView = findViewById(R.id.item_price_1);
-        TextView quantityView = findViewById(R.id.item_quantity_1);
-        LinearLayout itemContainer = findViewById(R.id.item_1_container);
-        Button checkoutBtn = findViewById(R.id.btn_checkout_1);
-        Button deleteBtn = findViewById(R.id.btn_delete_1);
-        Button btnBack = findViewById(R.id.btn_back);
-
-        // Gán dữ liệu
-        imageView.setImageResource(image);
-        nameView.setText(name);
-        priceView.setText("Giá: " + price);
-        quantityView.setText("Số lượng: " + quantity);
-
-        // Xử lý nút Thanh toán
-        checkoutBtn.setOnClickListener(v -> {
-            Intent checkoutIntent = new Intent(CartActivity.this, PaymentActivity.class);
-            checkoutIntent.putExtra("image", image);
-            checkoutIntent.putExtra("name", name);
-            checkoutIntent.putExtra("price", price);
-            checkoutIntent.putExtra("quantity", quantity);
-            startActivity(checkoutIntent);
-        });
-
-        // Xử lý nút Xóa
-        deleteBtn.setOnClickListener(v -> {
-            itemContainer.setVisibility(View.GONE);
-            Toast.makeText(CartActivity.this, "Đã xóa sản phẩm khỏi giỏ", Toast.LENGTH_SHORT).show();
-        });
+        // Thêm sản phẩm vào giỏ hàng
+        addProductToCart(name, price, quantity, image);
 
         // Nút quay lại
-        btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(CartActivity.this, ProductDetailActivity.class);
-            backIntent.putExtra("image", image);
-            backIntent.putExtra("name", name);
-            backIntent.putExtra("price", price);
-            backIntent.putExtra("quantity", quantity);
-            startActivity(backIntent);
-        });
+        Button btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(v -> finish());
+    }
+
+    private void addProductToCart(String name, String price, String quantity, int image) {
+        Product product = new Product(name, image, price, quantity);
+        cartProducts.add(product);
+        updateCartUI();
+    }
+
+    private void updateCartUI() {
+        cartContainer.removeAllViews();
+
+        for (Product product : cartProducts) {
+            View itemView = getLayoutInflater().inflate(R.layout.cart_item_layout, cartContainer, false);
+
+            ImageView itemImage = itemView.findViewById(R.id.item_image);
+            TextView itemName = itemView.findViewById(R.id.item_name);
+            TextView itemPrice = itemView.findViewById(R.id.item_price);
+            TextView itemQuantity = itemView.findViewById(R.id.item_quantity);
+            Button checkoutBtn = itemView.findViewById(R.id.btn_checkout);
+            Button deleteBtn = itemView.findViewById(R.id.btn_delete);
+
+            // Gán dữ liệu
+            itemImage.setImageResource(product.getImageResId());
+            itemName.setText(product.getName());
+            itemPrice.setText("Giá: " + product.getPrice());
+            itemQuantity.setText("Số lượng: " + product.getQuantity());
+
+            // Xử lý nút Thanh toán
+            checkoutBtn.setOnClickListener(v -> {
+                Intent checkoutIntent = new Intent(CartActivity.this, PaymentActivity.class);
+                checkoutIntent.putExtra("image", product.getImageResId());
+                checkoutIntent.putExtra("name", product.getName());
+                checkoutIntent.putExtra("price", product.getPrice());
+                checkoutIntent.putExtra("quantity", product.getQuantity());
+                startActivity(checkoutIntent);
+            });
+
+            // Xử lý nút Xóa
+            deleteBtn.setOnClickListener(v -> {
+                cartProducts.remove(product);
+                updateCartUI();
+                Toast.makeText(CartActivity.this, "Đã xóa sản phẩm khỏi giỏ", Toast.LENGTH_SHORT).show();
+            });
+
+            cartContainer.addView(itemView);
+        }
     }
 }

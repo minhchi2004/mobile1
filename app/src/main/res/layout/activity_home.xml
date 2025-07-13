@@ -8,6 +8,12 @@
     android:background="@color/pastel_pink"
     android:fitsSystemWindows="true"
     tools:context=".HomeActivity">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAPI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/category_section"
+        android:layout_marginTop="16dp" />
 
     <!-- Header -->
     <LinearLayout
@@ -26,17 +32,16 @@
             android:fontFamily="sans-serif-black"
             android:layout_marginLeft="20dp" />
     </LinearLayout>
-        <!-- Bọc giỏ hàng trong LinearLayout theo chiều dọc và căn phải -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="end"
-            android:paddingEnd="16dp"
 
-            android:layout_marginTop="8dp">
+    <!-- Bọc giỏ hàng trong LinearLayout theo chiều dọc và căn phải -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="end"
+        android:paddingEnd="16dp"
+        android:layout_marginTop="8dp">
 
-<!--       gio hang-->
         <ImageView
             android:id="@+id/cart_icon"
             android:layout_width="30dp"
@@ -52,18 +57,17 @@
             android:textColor="@color/teal_700"
             android:textSize="15sp"
             android:textStyle="bold"/>
-<!--            android:layout_marginEnd="20dp" />-->
     </LinearLayout>
 
     <!-- Hình nền chỉ nằm dưới SearchView (banner nhỏ) -->
     <ImageView
         android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="308dp"
         android:layout_below="@id/header"
+        android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
-        android:src="@drawable/minhchi"
-        android:contentDescription="@string/app_name" />
+        android:src="@drawable/minhchi" />
 
     <!-- SearchView nằm phía trên hình nền -->
     <SearchView
@@ -86,90 +90,148 @@
         android:layout_marginTop="10dp"
         android:padding="10dp">
 
-    <!-- Mục 1 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:gravity="center_vertical">
+        <!-- Mục 1 -->
 
-        <ImageView
-            android:id="@+id/category1"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/minhchi1"
-            android:scaleType="centerCrop"
-            android:contentDescription="Danh mục 1" />
+        <!-- Mục 2 -->
 
-        <TextView
-            android:id="@+id/name1"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Váy trễ vai lông body "
-            android:textColor="@color/deep_red"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginStart="15dp" />
-    </LinearLayout>
+            android:layout_marginBottom="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-    <!-- Mục 2 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:gravity="center_vertical">
+            <ImageView
+                android:id="@+id/category1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:contentDescription="Danh mục 1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/minhchi1" />
 
-        <ImageView
-            android:id="@+id/category2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/minhchi2"
-            android:scaleType="centerCrop"
-            android:contentDescription="Danh mục 2" />
+            <TextView
+                android:id="@+id/name1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:text="Váy trễ vai lông body "
+                android:textColor="@color/deep_red"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/name2"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/price1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="500,000"
+                android:textColor="@color/deep_red"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/add_to_cart1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:contentDescription="Thêm vào giỏ hàng"
+                android:src="@drawable/ic_cart"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Set áo chun quây gân tăm kèm quần "
-            android:textColor="@color/deep_red"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginStart="15dp" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_vertical">
 
-    <!-- Mục 3 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:gravity="center_vertical">
+            <ImageView
+                android:id="@+id/category2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/minhchi2"
+                android:scaleType="centerCrop"
+                android:contentDescription="Danh mục 2" />
 
-    <ImageView
-        android:id="@+id/category3"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/minhchi3"
-        android:textColor="@color/deep_red"
-        android:scaleType="centerCrop"
-        android:contentDescription="Danh mục 3" />
+            <TextView
+                android:id="@+id/name2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Set áo chun quây gân tăm kèm quần "
+                android:textColor="@color/deep_red"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="15dp" />
 
-    <TextView
-        android:id="@+id/name3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Áo 2 dây nữ thời trang"
-        android:textColor="@color/deep_red"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginStart="15dp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/price2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="300,000"
+                android:textColor="@color/deep_red"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp" />
+
+            <ImageView
+                android:id="@+id/add_to_cart2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_cart"
+
+                android:contentDescription="Thêm vào giỏ hàng"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+
+        <!-- Mục 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/category3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/minhchi3"
+                android:scaleType="centerCrop"
+                android:contentDescription="Danh mục 3" />
+
+            <TextView
+                android:id="@+id/name3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Áo 2 dây nữ thời trang"
+                android:textColor="@color/deep_red"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="15dp" />
+
+            <TextView
+                android:id="@+id/price3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="360,000"
+                android:textColor="@color/deep_red"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp" />
+
+            <ImageView
+                android:id="@+id/add_to_cart3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_cart"
+
+                android:contentDescription="Thêm vào giỏ hàng"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center_vertical"/>
+        </LinearLayout>
 
         <!-- Mục 4 -->
         <LinearLayout
@@ -196,29 +258,24 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginStart="15dp" />
+
+            <TextView
+                android:id="@+id/price4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="520,000"
+                android:textColor="@color/deep_red"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp" />
+
+            <ImageView
+                android:id="@+id/add_to_cart4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_cart"
+                android:contentDescription="Thêm vào giỏ hàng"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center_vertical"/>
         </LinearLayout>
     </LinearLayout>
-
-
-
-<!--    &lt;!&ndash; ListView nằm dưới search &ndash;&gt;-->
-<!--    <ListView-->
-<!--        android:id="@+id/movie_list_view"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/category_section"-->
-<!--        android:layout_above="@id/bottom_nav"-->
-<!--        android:dividerHeight="10dp"-->
-<!--        android:background="@android:color/transparent"-->
-<!--        android:paddingTop="20dp" />-->
-
-
-<!--    &lt;!&ndash; Bottom Navigation Bar &ndash;&gt;-->
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bottom_nav"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        />-->
-
 </RelativeLayout>

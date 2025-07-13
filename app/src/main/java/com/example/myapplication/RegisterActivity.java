@@ -23,14 +23,15 @@ public class RegisterActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Button btnDangki = findViewById(R.id.btnLogin2);
-        btnDangki.setOnClickListener(new View.OnClickListener() {
+
+        // Thay đổi ID nút để phù hợp với layout
+        Button btnSignUp = findViewById(R.id.btnSignUp);
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent b = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(b);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
             }
         });
-
     }
 }

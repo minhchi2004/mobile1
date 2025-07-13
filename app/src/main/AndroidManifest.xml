@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.myapplication">
+    xmlns:tools="http://schemas.android.com/tools">
+<!--    package="com.example.myapplication">-->
+    <uses-permission android:name="android.permission.INTERNRT"/>
 
     <application
         android:allowBackup="true"
@@ -38,8 +39,8 @@
 
 
         <!--        <activity-->
-<!--            android:name=".CartActivity"-->
-<!--            tools:ignore="DuplicateActivity" />-->
+        <!--            android:name=".CartActivity"-->
+        <!--            tools:ignore="DuplicateActivity" />-->
 
 
     </application>
